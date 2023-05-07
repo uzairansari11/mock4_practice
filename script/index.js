@@ -47,7 +47,10 @@ function displayData(data) {
         brand.innerHTML = ele.brand;
         let price = document.createElement('p');
         price.innerHTML = ele.price;
-        card.append(image, title, category, brand, price);
+        let editButton = document.createElement('button')
+        editButton.innerText = "edit"
+        editButton.addEventListener("click",()=>handleEdit(ele.id))
+        card.append(image, title, category, brand, price, editButton);
         cardBody.append(card);
     });
 }
@@ -76,6 +79,10 @@ function handlePagination(data) {
     getProduct(fetchURL, limit, page);
 }
 
+
+function handleEdit(value) {
+    console.log(value);
+}
 // Event listeners
 sorting.addEventListener('change', (e) => sortingData(e.target.value, allData));
 filter.addEventListener('change', (e) => filteringData(e.target.value));
